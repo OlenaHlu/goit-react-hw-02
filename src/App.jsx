@@ -1,20 +1,57 @@
 import { useState, useEffect } from "react";
+
 import Description from "./components/Descriptions/Descriptions";
 import Feedback from "./components/Feedback/Feedback";
+import Options from "./components/Options/Options";
+import Notification from "./components/Notification/Notification";
 
 function App() {
-  //створюємо стан для зберігання типів відгуків
-  const [feedbackTypes, setFeedbackTypes] = useState({
-    good: 0,
-    neutral: 0,
-    bad: 0,
+  const [countFeedback, setCountFeedback] = useState(() => {
+    const savedFeedback = window.localStorage.getItem("countFeedback");
+    if (savedFeedback !== null) {
+      return JSON.parse(savedFeedback);
+    }
+    return { good: 0, neutral: 0, bad: 0 };
   });
 
+  const { good, neutral, bad } = countFeedback;
+  const totalFeedback = good + neutral + bad;
+  const positiveFeedback = Math.round((good / totalFeedback) * 100);
+
+  const updateFeedback = (type, value = null) => {
+    setCountFeedback((prevCountFeedback) => {
+      if (value === null) {
+        return {
+          ...prevCountFeedback,
+          [type]: prevCountFeedback[type] + 1,
+        };
+      } else {
+        return {
+          ...prevCountFeedback,
+          [type]: value,
+        };
+      }
+    });
+  };
+
+  useEffect(() => {
+    localStorage.setItem("countFeedback", JSON.stringify(countFeedback));
+  }, [countFeedback]);
+
   return (
-    <div>
-      <Feedback />
-      <Options />
-    </div>
+    <>
+      <Description />
+      <Options updateFeedback={updateFeedback} totalFeedback={totalFeedback} />
+      {totalFeedback === 0 ? (
+        <Notification totalFeedback={totalFeedback} />
+      ) : (
+        <Feedback
+          countFeedback={countFeedback}
+          totalFeedback={totalFeedback}
+          positiveFeedback={positiveFeedback}
+        />
+      )}
+    </>
   );
 }
 
