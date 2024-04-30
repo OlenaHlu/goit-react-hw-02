@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import css from "./Options.module.css";
 
 function Options({ updateFeedback, totalFeedback }) {
   const resetFeedback = () => {
@@ -8,11 +9,30 @@ function Options({ updateFeedback, totalFeedback }) {
   };
 
   return (
-    <div>
-      <button onClick={() => updateFeedback("good")}>Good</button>
-      <button onClick={() => updateFeedback("neutral")}>Neutral</button>
-      <button onClick={() => updateFeedback("bad")}>Bad</button>
-      {totalFeedback > 0 && <button onClick={resetFeedback}>Reset</button>}
+    <div className={css.optionsContainer}>
+      <button
+        className={css.optionsButtons}
+        onClick={() => updateFeedback("good")}
+      >
+        Good
+      </button>
+      <button
+        className={css.optionsButtons}
+        onClick={() => updateFeedback("neutral")}
+      >
+        Neutral
+      </button>
+      <button
+        className={css.optionsButtons}
+        onClick={() => updateFeedback("bad")}
+      >
+        Bad
+      </button>
+      {totalFeedback > 0 && (
+        <button className={css.optionsButtons} onClick={resetFeedback}>
+          Reset
+        </button>
+      )}
     </div>
   );
 }

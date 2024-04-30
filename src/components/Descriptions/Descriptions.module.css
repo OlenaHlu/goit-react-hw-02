@@ -1,0 +1,22 @@
+h1,
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.descriptionContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-left: 20px;
+}
+
+.descriptionTitle {
+  margin-bottom: 20px;
+}
+
+.descriptionText {
+  font-weight: 600;
+  margin-bottom: 16px;
+}

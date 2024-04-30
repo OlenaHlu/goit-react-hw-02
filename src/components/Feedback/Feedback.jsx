@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import css from "./Feedback.module.css";
 
 function Feedback({
   countFeedback: { good, neutral, bad },
@@ -6,12 +7,12 @@ function Feedback({
   positiveFeedback,
 }) {
   return (
-    <div>
-      <p>Good: {good}</p>
-      <p>Neutral: {neutral}</p>
-      <p>Bad: {bad}</p>
-      <p>Total: {totalFeedback}</p>
-      <p>Positive: {positiveFeedback}%</p>
+    <div className={css.feedbackContainer}>
+      <p className={css.feedbackData}>Good: {good}</p>
+      <p className={css.feedbackData}>Neutral: {neutral}</p>
+      <p className={css.feedbackData}>Bad: {bad}</p>
+      <p className={css.feedbackData}>Total: {totalFeedback}</p>
+      <p className={css.feedbackResult}>Positive: {positiveFeedback}%</p>
     </div>
   );
 }

@@ -1,0 +1,21 @@
+.optionsContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+
+.optionsButtons {
+  border: none;
+  padding: 8px 16px;
+  background-color: rgb(119, 202, 229);
+  font-size: 16px;
+  color: black;
+  font-weight: 600;
+}
+
+.optionsButtons:hover {
+  background-color: rgb(14, 181, 159);
+  color: #fafafa;
+}

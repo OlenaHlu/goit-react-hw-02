@@ -1,0 +1,12 @@
+.feedbackContainer {
+  padding-left: 20px;
+}
+
+.feedbackData {
+  font-weight: 600;
+}
+
+.feedbackResult {
+  color: green;
+  font-weight: 600;
+}
