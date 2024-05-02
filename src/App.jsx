@@ -11,6 +11,12 @@ function App() {
 
     if (savedFeedback !== null) {
       return JSON.parse(savedFeedback);
+    } else {
+      return {
+        good: 0,
+        neutral: 0,
+        bad: 0,
+      };
     }
   });
 
